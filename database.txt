@@ -1,0 +1,411 @@
+============================================================================================
+					Some of the commands used for oracle apex database command 
+============================================================================================
+
+-- select statement
+  --extract record/s from a data table
+  
+-- select * from <tablename>
+	* -> all columns
+	
+--syntax
+	select <column list> from <table name> where <condition>
+	order by <expression>
+	
+	
+	1. column list
+	2. where condition
+	3. order by
+	
+	1.-> * -> all columns
+	2.-> where condition
+		-> to filter the records from table based on certain condition
+		
+
+
+sntax:
+	select <colmn list> from < table name > where  <column> operator <value>
+	
+	
+example:
+	 select * from student where name       =           'rajaul'
+	 							col name   operator      value
+	 							
+operators
+	1. comparision operator
+	2.logical operator
+	3.range opeartor
+	4.list operator
+	5.null value operator
+	6.string operator
+
+
+1. comparision operator
+	=  -> equal to
+		select * from student where name = 'rajaul'4
+		select * from student where age =20
+		
+		
+		
+	>
+	<
+	>=
+	<=
+	!=
+	
+	
+2. logical operator
+	if we have to use multiple column on condition at a time
+	
+	and  &&
+	OR   ||
+	Not  !
+	
+	
+	and -> provide results if all the conditions are true
+		select * from student where age >=20 and surname='Rajaul'
+		
+	or -> provide results if atleast one condition is true
+		select * from student where age >=20 or surname='Raul' or student_no=002
+		
+	not -> this cann't be used alone
+		select * from student where age !=20
+		
+		
+3. Range Operaor
+	numeric and date 
+	
+	between and 
+		select * from student where age between 20 and 24
+		
+		select * from student where age>=20 and age<=24
+		
+	not between and
+		select * from student where age  not between 20 and 24
+		
+		select * from student where age<20 or age>24
+
+
+
+4. List operator
+	in 
+	not in
+	
+	select * from student where surname in('Rajaul')
+	
+	select * from student where surname='Rajaul' or surname ='Raja' or age=20
+	
+	
+	select * from student where surname not in('Rajaul')
+	
+	select * from student where surname !='Rajaul' and surname !='Raja' and age!=20
+	
+	
+5. null value operator
+
+	is null
+	is not null
+	
+	select * from student where surname is null
+	select * from student where surnale is not null
+	 
+6. string operator
+	like
+	not like
+	wildcards; % -> any character of any length
+	
+	 select * from student  where surname like 'a%' ----- must start from a  and any other charater of any length
+	 
+	 select * from student  where surname like '%a' ----- must end with a  and any charater of any length before a
+	 
+	 select * from student where surname like '%a%'  ------- must include a 
+	
+	
+	
+Note:
+
+--combine multiple operator 
+	--use logical operator
+	
+	select * from student where surname in('Rajaul') and age between 20 and 25 and forename='Ansari'	
+	
+	
+	
+	
+-- Column filter
+	1. all columns
+		select * from student
+		
+	2. select only required columns
+		select email,forename.surname from student
+		
+	3. change the caption on runtime
+		select email as studentemail,surname from student
+		select email studentemail,surname from student
+		
+	4. Column manipulation
+		a. concatination
+			||
+			select email || surname from student
+			select email || surname as emailsurname from student
+			select email ||' and '|| surname as emailsurname from student
+			select email ||' '|| surname as emailsurname from student
+			select 'and '|| surname as emailsurname from student
+		
+		b. airthmatic operator
+			+
+			-
+			/
+			*
+			%
+			
+			-- numeric field 
+			
+				select surname,email, age*2 as DoubleAge from student 
+				select surname,email, (age*2)/2 as DoubleAge from student 
+
+Order by
+	 order result set on ascending or descending order
+	 
+	 select * from student where surname like 'R%' order by surname asc
+	 select * from student where surname like 'R%' order by surname desc
+	 
+	 asc-> ascending
+	 desc-> descending
+	 
+	 by default asc
+	 
+	 select * from student order by surname
+
+
+===========================================================================================================
+				Command used in oracle apex  SQL commands
+===========================================================================================================
+	
+select email from student
+
+select * from student order by student_no
+
+select * from student where age =20
+
+select * from student where surname  = 'Rajaul'
+
+select * from student where age <=20
+
+select email,surname from student
+
+select surname from student where length(surname)>6
+
+select surname from student where length(surname)>6 order by enroldate
+
+select * from student where age >=20 and surname='Rajaul'
+
+select * from student where age >=20 or surname='Raul' or student_no=002
+
+select * from student where age !=20
+
+select * from student where age between 20 and 24
+
+select * from student where age>=20 and age<=24
+
+select * from student where age  not between 20 and 24
+
+select * from student where age<20 and age>24
+
+select * from student where surname in('Rajaul')
+
+select * from student where surname='Rajaul' or surname ='Raja' or age=20
+
+select * from student where surname not in('Rajaul')
+
+select * from student where surname !='Rajaul' and surname !='Raja' and age!=20
+
+select * from student  where surname like 'R%'
+
+select * from student  where surname like '%a'
+
+select * from student  where surname like '%a%'
+	
+select * from student where surname in('Rajaul') and age between 20 and 25 and forename='Ansari'
+
+elect forename,email,surname from student
+
+select email as studentemail,surname from student
+
+select email studentemail,surname from student
+
+select email || surname from student
+
+select email || surname as emailsurname from student
+
+select email ||' and '|| surname as emailsurname from student
+
+select email ||' '|| surname as emailsurname from student
+
+select 'and '|| surname as emailsurname from student
+
+select surname,email, age*2 as DoubleAge from student
+
+select surname,email, (age*2)/2 as DoubleAge from student 
+
+select * from student where surname like 'R%' order by surname asc
+
+select * from student where surname like 'R%' order by surname desc
+
+select * from student order by surname
+
+
+
+======================================================================================================
+some of the commands that are used in the script uploaded for week 5 and week 6 and so on
+======================================================================================================
+
+select * from team
+
+select count(*) from team
+
+select min(first_year) from team
+
+select max(first_year) from team
+
+select count(*),min(first_year) ,max(first_year)from team
+
+select count(*) total_rows,min(first_year) as min_year ,max(first_year) as max_year from team
+
+select * from teammember
+
+select count(*),nationality from teammember group by nationality
+
+select count(*), surname,nationality from teammember group by surname,nationality order by surname
+
+select nationality from teammember
+
+
+
+==============================================================================================================
+some of the commands that are used in  wewk 7 
+==============================================================================================================
+
+select * from driver
+
+select * from track
+
+select * from race
+
+select * from raceresult
+
+select count(*) from raceresult
+
+select * from team
+
+select count(*),country from track group by country
+
+select * from driver inner join team on driver.teamname=team.teamname
+
+select * from driver,team where driver.teamname=team.teamname
+
+select driverno,surname,firstnames,team.teamname,base,power_unit from driver,team where driver.teamname=team.teamname
+
+
+
+
+
+select * from driver, team where driver.teamname = team.teamname
+
+select surname, firstnames, position, finish_time from driver, raceresult where driver.driverno = raceresult.driverno and race# = '26' and position in (1,2,3)
+
+select surname, firstnames, position, finish_time from driver inner join raceresult on driver.driverno = raceresult.driverno where race# = '26' and position in (1,2,3)
+
+select trackname, race_year, no_of_laps from race inner join track on race.trackno = track.trackno
+
+select * from race, track where race.trackno = track.trackno
+
+select * from raceresult
+
+select * from race
+
+select * from driver
+
+select race.race#,trackno,driverno from race, raceresult where race.race# = raceresult.race#
+
+select race_date, country, race_distance from race inner join track on race.trackno = track.trackno
+
+select trackno, race.race#, surname, firstnames, position from driver, race, raceresult where driver.driverno = raceresult.driverno and race.race# = raceresult.race#
+
+select trackno, surname, firstnames, position from driver, race, raceresult where driver.driverno = raceresult.driverno and race.race# = raceresult.race# and position < 4
+
+
+
+
+
+===============================================================================================================================
+Some of the questions practice from week 8 of qn 6 and 7 (inner join)
+===============================================================================================================================
+
+select t.full_teamname,tm.surname,tm.firstnames,d.surname,d.firstnames from teammember tm, 
+team t, driver d where tm.teamname=t.teamname and d.teamname=t.teamname
+
+select t.full_teamname,tm.surname,tm.firstnames,d.surname,d.firstnames 
+from teammember tm,team t,driver d where tm.teamname=t.teamname and d.teamname=t.teamname and t.power_unit='Mercedes'
+
+select t.teamname,rr.position,tk.trackname,tk.no_of_laps from team t, driver d, raceresult rr,race r, track tk where t.teamname=d.teamname and rr.driverno=d.driverno and r.race#=rr.race# and r.trackno=tk.trackno
+
+
+===============================================================================================================================
+some commmand used in week 8 revision
+===============================================================================================================================
+select <column list>
+from
+tbl1 t1 <join type> tbl2 t2
+on
+t1.common_column=t2.commoncolumn
+---------
+1. INNER JOIN
+2. OUTER JOIN
+	1. LEFT outer join
+	2. RIGHT outer join
+	3. FULL outer join
+	
+	
+Commands:
+=========
+select full_teamname, firstnames, surname
+from driver d inner join team t
+on
+d.teamname=t.teamname
+inner join tbl3
+on 
+    condition
+
+select * from driver
+
+select * from team
+
+
+insert into team values('TBC','TBC Demo','Kathmandu Nepal',1970,'tbc')
+
+insert into team values('TU','TU Demo','Kathmandu Nepal',1970,'TU')
+
+select * from team t left outer join driver d 
+on t.teamname=d.teamname where t.teamname='TU'
+
+==================================================================================================================================
+Some of the commands that are used in week 8 complex queries
+==================================================================================================================================
+select count(*) as Totaldriver,country from driver group by country 
+
+
+
+
+==================================================================================================================================
+Some of the commands that are used in week 9 more complex queries
+==================================================================================================================================
+select count(*) as Totaldriver,country from driver 
+where country ='Finland' or country ='United Kingdom' or country='Canada'
+-- where country in('Finland','United Kingdom')
+group by country
+-- having country = 'Thailand'
+having count(country)>2
+
+select distinct country from driver
+
