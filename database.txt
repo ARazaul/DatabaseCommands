@@ -409,3 +409,17 @@ having count(country)>2
 
 select distinct country from driver
 
+select count(*) totalpositions , country from driver,raceresult where driver.driverno = raceresult.driverno and position in(1,2,3)
+group by country
+having count(*)>2
+
+select 1, country from driver
+
+select count(1), country from driver group by country
+
+select count(*) totalpositions , country from driver
+inner join raceresult
+on driver.driverno=raceresult.driverno
+where position in(1,2,3)
+group by country
+having count(*)>2
