@@ -423,3 +423,55 @@ on driver.driverno=raceresult.driverno
 where position in(1,2,3)
 group by country
 having count(*)>2
+
+
+==================================================================================================================================
+Some of the practice commands used in oracle apex command
+==================================================================================================================================
+
+--QN 1.. list all drivers from team scuderia ferrari
+
+select * from driver where teamname='Ferrari'
+
+select * from driver
+
+select * from team
+
+select * from driver d, team t
+
+select d.firstnames from driver d, team t where d.teamname=t.teamname 
+
+select d.firstnames from driver d, team t where d.teamname=t.teamname and full_teamname='Scuderia Ferrari'
+
+select * from driver d, team t where d.teamname=t.teamname and full_teamname='Scuderia Ferrari'
+
+
+select driver.* from team,driver where team.teamname=driver.teamname and team.full_teamname='Scuderia Ferrari'
+
+select teamname from team where full_teamname='Scuderia Ferrari'
+
+select * from driver where teamname='Ferrari'
+
+select * from driver where 					--outer query or main query
+teamname=
+(select teamname from team where full_teamname='Scuderia Ferrari') 				--inner query or sub query
+
+-- sub query is inner or nested query
+--with select, insert, update, delete
+
+
+--QN 2..extract list of raceresult whose point is greater than average point
+
+
+select * from raceresult
+select avg(points) from raceresult 
+select * from raceresult where points >(select avg(points) from raceresult ) 
+
+
+-- QN 3.. select list of drivers who scored top three position
+
+
+select * from driver
+select * from raceresult
+select driverno from raceresult where position in(1,2,3)
+select * from driver where driverno in(select driverno from raceresult where position in(1,2,3))
