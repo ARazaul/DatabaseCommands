@@ -475,3 +475,13 @@ select * from driver
 select * from raceresult
 select driverno from raceresult where position in(1,2,3)
 select * from driver where driverno in(select driverno from raceresult where position in(1,2,3))
+
+======================================================================================================
+
+--To delete a column from a table
+alter table rajaul drop column id
+
+--to delete a row from a table
+delete from rajaul where race# = 24;
+
+======================================================================================================
