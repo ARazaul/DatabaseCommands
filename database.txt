@@ -485,3 +485,55 @@ alter table rajaul drop column id
 delete from rajaul where race# = 24;
 
 ======================================================================================================
+creating some of the table that are used for  appBuilder
+======================================================================================================
+create table customer(
+    customerid number(10) primary key,
+	firstname	varchar2(50) not null,
+	lastname	varchar2(50) not null,
+	address		varchar2(100) not null,
+	phone		char(10) not null,
+	email 		varchar2(50) not null,
+	gender		char(6),
+	occupation	varchar2(20) not null
+)
+select * from customer
+
+create table productcategory(
+    productcategoryid	number(3) primary key,
+	category		varchar2(50) not null,
+	description		varchar2(100) not null
+)
+select * from productcategory
+
+create table product(
+    productid		number(5) primary key,
+	productcategoryid	number(3),
+    foreign key(productcategoryid) references productcategory(productcategoryid),
+	name			varchar2(50)	not null,
+	description		varchar2(100) not null,
+	rate			number(10,2) not null
+)
+
+create table orders(
+    orderid			number(10) primary key,
+	customerid		number(10),
+    foreign key(customerid) references customer(customerid),
+	orderdate			date not null,
+	total			number(10,2) not null,
+	discount		number(10,2) not null,
+	tax			number(10,2) not null,
+	grandtotal		number(10,2) not null
+)
+
+create table orderdetail(
+    orderdetailid 	number(10) primary key,
+	orderid 	number(10) references orders(orderid),
+	productid	number(5),
+    foreign key(productid) references product(productid),
+	rate 		number(10,2) not null,
+	qty		number(3) not null,
+	total		number(10,2) not null
+)
+
+=====================================================================================================================================
