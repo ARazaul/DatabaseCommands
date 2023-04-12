@@ -1,0 +1,40 @@
+TABLES
+---------
+Customer
+	customerid number(10) primary key
+	firstname	varchar2(50) not null
+	lastname	varchar2(50) not null
+	address		varchar2(100) not null
+	phone		char(10) not null
+	email 		varchar2(50) not null
+	gender		char(6)
+	occupation	varchar2(20) not null
+
+ProductCategory
+	productcategoryid	number(3) primary key
+	category		varchar2(50) not null
+	description		varhcar2(100) not null
+
+Product
+	productid		number(5) primary key
+	productcategoryid	number(3) foregn key from productcategory
+	name			varchar2(50)	not null
+	description		varchar2(100) not null
+	rate			number(10,2) not null
+
+Order
+	orderid			number(10) primary key
+	customerid		number(10) foreign key from customer table
+	date			date not null
+	total			number(10,2) not null
+	discount		number(10,2) not null
+	tax			number(10,2) not null
+	grandtotal		number(10,2) not null
+
+OrderDetail
+	orderdetailid 	number(10) primary key
+	orderid 	number(10) foreign key from order table
+	productid	number(5) foreign key from product
+	rate 		number(10,2) not null
+	qty		number(3) not 
+	total		number(10,2) not null
