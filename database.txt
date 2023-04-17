@@ -553,3 +553,6 @@ select * from product
 insert into product values (1,2,'Test Product A', 'Product description',100)
 
 insert into product values (2,1,'Test Product B', 'Product description B',100)
+
+
+select pc.category,p.name,p.description,p.rate from productcategory pc, product p where pc.productcategoryid=p.productcategoryid
