@@ -541,3 +541,15 @@ create table orderdetail(
 To create a sequence
 
 create sequence seq_productcategory start with 1 increment by 1
+
+insert into productcategory values (seq_productcategory.nextval, 'Categoey A','Categoey A')
+
+insert into productcategory values (seq_productcategory.nextval, 'Categoey B','Categoey B')
+
+select * from productcategory
+
+select * from product
+
+insert into product values (1,2,'Test Product A', 'Product description',100)
+
+insert into product values (2,1,'Test Product B', 'Product description B',100)
