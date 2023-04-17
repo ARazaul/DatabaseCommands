@@ -537,3 +537,7 @@ create table orderdetail(
 )
 
 =====================================================================================================================================
+
+To create a sequence
+
+create sequence seq_productcategory start with 1 increment by 1
