@@ -1,0 +1,18 @@
+select * from treatment
+
+select max(treatmentno) from treatment
+
+select * from treatment t,drugusage du,animal a,drug d where t.treatmentno=du.treatmentno
+and a.animalno=t.animalno
+and d.drugno=du.drugno
+
+select a.animalname,a.species,
+t.treatmentdate,t.description,
+d.drugtype,d.drug_description,
+du.drugquantity,du.instructions
+from treatment t,drugusage du,animal a,drug d where t.treatmentno=du.treatmentno
+and a.animalno=t.animalno
+and d.drugno=du.drugno
+order by treatmentdate ,animalname
+
+select drug_description,quantity from drug
